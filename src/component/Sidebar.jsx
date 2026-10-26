@@ -10,7 +10,20 @@ import {
   User,
 } from "lucide-react";
 
-const Sidebar = ({ collapsed, setCollapsed }) => {
+const Sidebar = ({ collapsed, setCollapsed ,clearchat }) => {
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('i am clicked')
+    
+
+    clearchat();
+   
+  };
+
+
+
   return (
     <aside
       className={`h-screen bg-[#171717] text-white flex flex-col border-r border-gray-800 transition-all duration-300 ${
@@ -39,7 +52,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
 
       {/* New Chat */}
       <div className="px-3 mt-4">
-        <button
+        <button onClick={handleSubmit}
           className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg
           bg-white text-black hover:bg-gray-200 transition
           ${collapsed ? "justify-center" : ""}`}
@@ -47,7 +60,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           <Plus size={20} />
 
           {!collapsed && (
-            <span className="font-medium">
+            <span  className="font-medium">
               New Chat
             </span>
           )}
