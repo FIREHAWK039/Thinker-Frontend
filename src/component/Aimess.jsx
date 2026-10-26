@@ -1,11 +1,16 @@
 import React from 'react'
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
-function Aimess() {
+function Aimess({input,index}) {
   return (
-    <div className='relative left-40 top-10 mt-5  max-w-[30%] rounded-lg'>
-                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim, magni quos suscipit hic tempora aperiam adipisci minus iure quasi architecto nulla libero omnis? Provident non iusto repellat, eligendi at sequi asperiores doloremque atque accusantium quam labore, molestias enim rem rerum! Iste, ipsum. A eveniet commodi unde. Exercitationem aperiam molestias sapiente.
+  
+<div key={index} className="mr-auto whitespace-pre-wrap break-words leading-7 px-4 mt-5 w-fit max-w-[70%] break-words rounded-lg p-3">
+    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {input}
+      </ReactMarkdown>
+</div>
 
-                </div>
   )
 }
 
