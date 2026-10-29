@@ -34,7 +34,7 @@ const Sidebar = ({ collapsed, setCollapsed ,clearchat }) => {
       <div className="flex items-center justify-between p-3">
         {!collapsed && (
           <div className="text-xl font-bold px-2">
-            MentorMind
+            Thinker
           </div>
         )}
 
@@ -72,6 +72,7 @@ const Sidebar = ({ collapsed, setCollapsed ,clearchat }) => {
 
         {/* Projects */}
         <button
+        onClick={() => window.location.href = "/dashboard"}
           className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg
           hover:bg-gray-800 transition
           ${collapsed ? "justify-center" : ""}`}
@@ -79,7 +80,7 @@ const Sidebar = ({ collapsed, setCollapsed ,clearchat }) => {
           <Folder size={20} />
 
           {!collapsed && (
-            <span>Projects</span>
+            <span>Dashboard</span>
           )}
         </button>
 

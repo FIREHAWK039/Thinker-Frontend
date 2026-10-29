@@ -11,9 +11,13 @@ function Home() {
 const [collapsed, setCollapsed] = useState(false);
     const [messagelist,setmessagelist] = useState([ ]);
     const [show, setShow] = useState(false);
+    const [array, setArray] = useState([4, 6, 7, 8, 9, 10, 15, 17, 19, 20, 25]);
+    const [target, setTarget] = useState(20);
 
 useEffect(() => {
+  
   console.log("Updated message list:", messagelist);
+  
 }, [messagelist]);
 
 
@@ -39,9 +43,17 @@ useEffect(() => {
       }
     );
 
-    console.log("Backend response:", response.data.data.message);
+    console.log("Backend response:", response.data.data.message.message);
+    if(response.data.data.message.dsaPlayer){
+      setArray(response.data.data.message.dsaPlayer.array);
+      setTarget(response.data.data.message.dsaPlayer.target);
+    } else {
+      console.log("No dsaPlayer data in the response.");
+      
+    }
+    
 
-    return response.data.data.message;
+    return response.data.data.message.message;
   } catch (error) {
     console.error("Error sending message:", error);
   }
@@ -57,6 +69,7 @@ const onmessagesend = async (input) => {
 
   try {
     // Get AI response from backend
+    
     const aimessage = await handleSend(input);
 
     // Add AI response
@@ -131,7 +144,8 @@ const onmessagesend = async (input) => {
       {show && (
         <div className="w-full max-w-3xl">
           <DSAPlayer
-            data={{ array: [4, 6, 7, 8, 9, 10, 15, 17, 19, 20, 25], target: 20 }}
+
+            data={{ array: array, target: target }}
           />
         </div>
       )}
