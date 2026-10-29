@@ -10,6 +10,7 @@ import DSAPlayer from "../component/DSAPlayer";
 function Home() {
 const [collapsed, setCollapsed] = useState(false);
     const [messagelist,setmessagelist] = useState([ ]);
+    const [show, setShow] = useState(false);
 
 useEffect(() => {
   console.log("Updated message list:", messagelist);
@@ -117,7 +118,24 @@ const onmessagesend = async (input) => {
 
                     </div>
                 </section>
+                
 
+<div className="flex w-full flex-col items-center gap-4 p-6">
+      <button
+        onClick={() => setShow((prev) => !prev)}
+        className="rounded-lg bg-blue-600 px-5 py-2 font-semibold text-white hover:bg-blue-500"
+      >
+        {show ? "Hide Visualization" : "Show Visualization"}
+      </button>
+
+      {show && (
+        <div className="w-full max-w-3xl">
+          <DSAPlayer
+            data={{ array: [4, 6, 7, 8, 9, 10, 15, 17, 19, 20, 25], target: 20 }}
+          />
+        </div>
+      )}
+    </div>
                 
 
                 {/* Chat Input Area */}
