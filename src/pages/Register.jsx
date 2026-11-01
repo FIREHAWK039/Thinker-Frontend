@@ -1,5 +1,5 @@
 import React from 'react'
-
+const API_URL = import.meta.env.VITE_API_URL;
 const Register =()=> {
   return(
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
@@ -18,7 +18,7 @@ const Register =()=> {
 
         {/* Form */}
         <form
-          action="http://localhost:8001/api/v1/users/register"
+          action={`${API_URL}/api/v1/users/register`}
           method="POST"
           className="space-y-5"
         >
@@ -100,7 +100,7 @@ const Register =()=> {
         <p className="text-center text-sm text-gray-500 mt-6">
           Already have an account?{" "}
           <a
-            href="/api/v1/users/login"
+            href={`${API_URL}/api/v1/users/login`}
             className="text-indigo-600 font-semibold hover:underline"
           >
             Login

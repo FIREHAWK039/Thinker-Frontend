@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8001/api/v1/users/login",
+        `${API_URL}/api/v1/users/login`,
         {
           method: "POST",
           headers: {
@@ -130,7 +130,7 @@ const Login = () => {
         <p className="text-center text-sm text-gray-500 mt-6">
           Don't have an account?{" "}
           <a
-            href="/api/v1/users/register"
+            href={`${API_URL}/api/v1/users/register`}
             className="text-indigo-600 font-semibold hover:underline"
           >
             Register

@@ -6,7 +6,7 @@ import Usermess from "../component/Usermess";
 import ChatBox from "../component/Chatbox";
 import Aimess from "../component/Aimess";
 import DSAPlayer from "../component/DSAPlayer";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function Home() {
 const [collapsed, setCollapsed] = useState(false);
     const [messagelist,setmessagelist] = useState([ ]);
@@ -18,13 +18,14 @@ useEffect(() => {
   
   console.log("Updated message list:", messagelist);
   
-}, [messagelist]);
+}, 
+[messagelist]);
 
 
     async function clearchat() {
     
     const response = await axios.post(
-      "http://localhost:8001/api/v1/users/clear-chat"
+      `${API_URL}/api/v1/users/clear-chat`
       
     );
     
@@ -37,7 +38,7 @@ useEffect(() => {
   try {
   console.log("in axios");
     const response = await axios.post(
-      "http://localhost:8001/api/v1/users/chats",
+      `${API_URL}/api/v1/users/chats`,
       {
         message: input
       }
